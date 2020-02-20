@@ -27,3 +27,20 @@ join Customer
 on Customer.Id = [Order].CustomerId
 join Employee
 on Employee.Id = [Order].EmployeeId;
+
+
+-- Stretch 
+-- Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+select CategoryName, count(*) as count
+from Categories
+join Products
+on Categories.CategoryID = Products.CategoryID
+group by 1;
+
+
+-- Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records.
+select Orders.OrderID, count(OrderDetails.Quantity) as ItemCount
+from Orders
+join OrderDetails
+on Orders.OrderID = OrderDetails.OrderID
+group by 1;
